@@ -1,0 +1,102 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "0e9fc47d-4823-45c3-9ea3-2874c62adb34": {
+        "id": "0e9fc47d-4823-45c3-9ea3-2874c62adb34",
+        "parent": null,
+        "name": "jim-hello",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "38619279-4ac2-4482-9c06-3be0816ce49d"
+        ],
+        "isRemovable": false,
+        "filePath": "jim-hello"
+      },
+      "38619279-4ac2-4482-9c06-3be0816ce49d": {
+        "id": "38619279-4ac2-4482-9c06-3be0816ce49d",
+        "parent": "0e9fc47d-4823-45c3-9ea3-2874c62adb34",
+        "name": "lambda.js",
+        "type": "LAMBDA_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "jim-hello/lambda.js",
+        "code": "let AWS = require('aws-sdk');\n\nexports.handler = function(event, context, callback) {\n\n    console.log(\"Received request with payload\", event);\n\n    let operation = event.Operation;\n\n    let result = null;\n\n    switch(operation) {\n\n        case \"Add\":\n\n            result = event.LeftParameter + event.RightParameter;\n\n            break;\n\n        case \"Subtract\":\n\n            result = event.LeftParameter - event.RightParameter;\n\n            break;\n\n        case \"Multiply\":\n\n            result = event.LeftParameter + event.RightParameter;\n\n            break;\n\n        case \"Devide\":\n\n            result = event.LeftParameter / event.RightParameter;\n\n            break;\n\n        case \"Mod\":\n\n            result = event.LeftParameter % event.RightParameter;\n\n            break;\n\n        default:\n\n            result = \"Operation Not Permitted\";\n\n            break;\n\n    }\n\n    event.Result = result;\n\n    callback(null, event);\n\n}",
+        "triggers": [
+          {
+            "resourceName": "apigusEast1mySimpleCaculatorcalculatepost",
+            "config": {}
+          }
+        ],
+        "config": {
+          "runtime": "nodejs8.10",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        }
+      }
+    },
+    "deletedFiles": [],
+    "rootNode": "0e9fc47d-4823-45c3-9ea3-2874c62adb34",
+    "openFiles": [
+      "38619279-4ac2-4482-9c06-3be0816ce49d"
+    ],
+    "currentFileId": "38619279-4ac2-4482-9c06-3be0816ce49d",
+    "resources": {
+      "apigusEast1mySimpleCaculatorcalculatepost": {
+        "name": "apigusEast1mySimpleCaculatorcalculatepost",
+        "type": "API_GATEWAY",
+        "config": {
+          "selectedRegion": "us-east-1",
+          "apiMode": 0,
+          "apiName": "mySimpleCaculator",
+          "endpointType": "EDGE",
+          "resourceMode": 0,
+          "resourceName": "calculate",
+          "resourcePath": "/calculate",
+          "restMethod": "POST",
+          "proxyIntegration": false,
+          "enableCORS": false,
+          "stageMode": 0,
+          "stageName": "test"
+        },
+        "globallyEditable": false
+      }
+    },
+    "customTemplate": {
+      "dialect": null,
+      "definitions": {}
+    },
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {}
+    }
+  },
+  "PROJECT_META": {
+    "projectName": "jim-hello",
+    "projectDescription": "test",
+    "projectVersion": "1.0.0",
+    "projectRegion": "us-east-1",
+    "platform": "AWS",
+    "platformRegions": {},
+    "lastSave": 1555284646665
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "jim-hello",
+      "url": "https://github.com/zhenyiji/jim-hello"
+    }
+  }
+}
